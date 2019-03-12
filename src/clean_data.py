@@ -1,3 +1,5 @@
+from sklearn.model_selection import train_test_split
+
 from src.ingest_data import IngestData
 from utils.enumerations import LabelColumnNames
 
@@ -13,3 +15,8 @@ class CleanData(object):
 
     def get_label_column(self):
         return self._model_data[LabelColumnNames.CLASS.value]
+
+    def get_train_and_test_data(self, test_size=0.2):
+
+        return train_test_split(self.get_features_column(), self.get_label_column(), test_size=test_size,
+                                random_state=0)
