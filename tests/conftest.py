@@ -3,6 +3,7 @@ from sklearn.ensemble import ExtraTreesClassifier
 
 from src.clean_data import CleanData
 from src.ingest_data import IngestData
+from src.predict import Predict
 from src.training import Training
 from utils.enumerations import Directory
 
@@ -25,3 +26,13 @@ def random_forest_model():
 @pytest.fixture(scope='module')
 def training(clean_data: CleanData, random_forest_model):
     return Training(clean_data, random_forest_model)
+
+
+@pytest.fixture(scope='module')
+def x_test(training: Training):
+    return training.x_test
+
+
+@pytest.fixture(scope='module')
+def predict(training: Training):
+    return Predict(training)
