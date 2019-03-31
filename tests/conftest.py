@@ -1,3 +1,6 @@
+from enum import Enum
+from pathlib import Path
+
 import pytest
 from sklearn.ensemble import ExtraTreesClassifier
 
@@ -5,12 +8,21 @@ from src.clean_data import CleanData
 from src.ingest_data import IngestData
 from src.predict import Predict
 from src.training import Training
-from utils.enumerations import Directory
+from utils.enumerations import Directory, FolderNames
+
+
+class DirectoryTest(Enum):
+
+    PARENT_DIR = Path(__file__).parent.resolve()
+
+    MODELS_DIR = PARENT_DIR / FolderNames.MODELS.value
+
+    RF_MODEL_TRAIN_DIR = MODELS_DIR / 'random_forest_train.joblib'
 
 
 @pytest.fixture(scope='module')
 def ingest_data():
-    return IngestData(Directory.IRIS_DATA_DIR)
+    return IngestData(Directory.IRIS_DATA_DIR.value)
 
 
 @pytest.fixture(scope='module')

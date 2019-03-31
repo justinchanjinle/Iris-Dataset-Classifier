@@ -7,6 +7,7 @@ PARENT_DIR = Path(__file__).parent.parent.resolve()
 class FolderNames(Enum):
 
     DATA = 'data'
+    MODELS = 'models'
 
 
 class FileNames(Enum):

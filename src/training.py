@@ -1,3 +1,6 @@
+import joblib
+
+from pathlib import Path
 from typing import TypeVar
 
 from sklearn.base import ClassifierMixin
@@ -32,3 +35,11 @@ class Training(object):
 
     def train_model(self, **kwargs):
         return self._model.fit(self._x_train, self._y_train, **kwargs)
+
+    def save_model(self, save_model_dir: Path, **train_kwargs):
+
+        model_file = self.train_model(**train_kwargs)
+
+        with save_model_dir.open('wb') as save_model_file:
+
+            joblib.dump(model_file, save_model_file)
