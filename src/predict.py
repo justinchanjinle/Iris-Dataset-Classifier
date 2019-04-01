@@ -10,10 +10,10 @@ class Predict(object):
 
     def predict(self, x_data):
 
-        trained_model = self.load_model()
+        trained_model = self._load_model()
         return trained_model.predict(x_data)
 
-    def load_model(self):
+    def _load_model(self):
 
         with self._load_model_dir.open('rb') as model_file:
             return joblib.load(model_file)

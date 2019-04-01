@@ -34,12 +34,12 @@ class Training(object):
     def y_test(self):
         return self._y_test
 
-    def train_model(self, **kwargs):
+    def _train_model(self, **kwargs):
         return self._model.fit(self._x_train, self._y_train, **kwargs)
 
     def save_model(self, **train_kwargs):
 
-        model_file = self.train_model(**train_kwargs)
+        model_file = self._train_model(**train_kwargs)
 
         with self._save_model_dir.open('wb') as save_model_file:
 
