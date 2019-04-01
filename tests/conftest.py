@@ -2,7 +2,7 @@ from enum import Enum
 from pathlib import Path
 
 import pytest
-from sklearn.ensemble import ExtraTreesClassifier
+from sklearn.ensemble import RandomForestClassifier
 
 from src.clean_data import CleanData
 from src.ingest_data import IngestData
@@ -34,7 +34,7 @@ def clean_data(ingest_data: IngestData):
 
 @pytest.fixture(scope='module')
 def random_forest_model():
-    return ExtraTreesClassifier(max_depth=20, random_state=0, n_estimators=200, n_jobs=6)
+    return RandomForestClassifier(max_depth=20, random_state=0, n_estimators=200, n_jobs=6)
 
 
 @pytest.fixture(scope='module')
