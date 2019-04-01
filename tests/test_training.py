@@ -14,7 +14,7 @@ def test_save_model(training: Training):
         if save_model_dir.exists():
             save_model_dir.unlink()
 
-        training.save_model(save_model_dir)
+        training.save_model()
 
         assert save_model_dir.exists(), 'Model file directory does not exist'
 

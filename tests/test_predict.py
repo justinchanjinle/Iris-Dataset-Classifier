@@ -11,4 +11,4 @@ def test_predict(predict: Predict, x_test: pd.DataFrame):
         y_predict = predict.predict(x_test)  # noqa
 
     except Exception as exception:
-        pytest.fail('Prediction failed: {}'.format(exception))
+        pytest.fail(f'Prediction failed: {exception}')
