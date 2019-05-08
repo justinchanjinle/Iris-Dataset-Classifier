@@ -1,18 +1,18 @@
 import subprocess
 
+from pathlib import Path
 from src.training import Training
 
 import pytest
 
-from tests.conftest import DirectoryTest
 from utils.enumerations import Directory, Models
 
 
-def test_save_model(training: Training):
+def test_save_model(training: Training, tmpdir: Path):
 
     try:
 
-        save_model_dir = DirectoryTest.RF_MODEL_TRAIN_DIR.value
+        save_model_dir = tmpdir / 'random_forest_train.joblib'
 
         if save_model_dir.exists():
             save_model_dir.unlink()

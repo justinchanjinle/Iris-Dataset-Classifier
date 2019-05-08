@@ -11,7 +11,7 @@ from src.training import Training
 from utils.enumerations import Directory, FolderNames
 
 
-class DirectoryTest(Enum):
+class Directories(Enum):
 
     PARENT_DIR = Path(__file__).parent.resolve()
 
@@ -39,7 +39,7 @@ def random_forest_model():
 
 @pytest.fixture(scope='module')
 def training(clean_data: CleanData, random_forest_model):
-    return Training(clean_data, random_forest_model, DirectoryTest.RF_MODEL_TRAIN_DIR.value)
+    return Training(clean_data, random_forest_model, Directories.RF_MODEL_TRAIN_DIR.value)
 
 
 @pytest.fixture(scope='module')
@@ -49,4 +49,4 @@ def x_test(training: Training):
 
 @pytest.fixture(scope='module')
 def predict():
-    return Predict(DirectoryTest.RF_MODEL_PREDICT_DIR.value)
+    return Predict(Directories.RF_MODEL_PREDICT_DIR.value)
