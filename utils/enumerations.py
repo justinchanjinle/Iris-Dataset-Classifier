@@ -15,11 +15,16 @@ class FileNames(Enum):
     IRIS_DATA = 'iris.csv'
 
 
+class ModelNames(Enum):
+
+    RANDOM_FOREST_DEFAULT = 'random_forest_default.joblib'
+
+
 class Directory(Enum):
 
     PARENT_DIR = Path(__file__).parent.parent.resolve()
-
     IRIS_DATA_DIR = PARENT_DIR / FolderNames.DATA.value / FileNames.IRIS_DATA.value
+    RANDOM_FOREST_DEFAULT_DIR = PARENT_DIR / FolderNames.MODELS.value / ModelNames.RANDOM_FOREST_DEFAULT.value
 
 
 class DataColumnNames(Enum):
