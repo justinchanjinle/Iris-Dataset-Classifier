@@ -12,11 +12,10 @@ TClassifier = TypeVar('TClassifier', bound=ClassifierMixin)
 
 class Training(object):
 
-    def __init__(self, clean_data: CleanData, model: TClassifier, save_model_dir: Path):
+    def __init__(self, clean_data: CleanData, model: TClassifier):
         self._clean_data = clean_data
         self._x_train, self._x_test, self._y_train, self._y_test = self._clean_data.get_train_and_test_data()
         self._model = model
-        self._save_model_dir = save_model_dir
 
     @property
     def x_train(self):
@@ -37,10 +36,8 @@ class Training(object):
     def _train_model(self, **kwargs):
         return self._model.fit(self._x_train, self._y_train, **kwargs)
 
-    def save_model(self, **train_kwargs):
+    def save_model(self,  save_model_dir: Path, **train_kwargs):
 
         model_file = self._train_model(**train_kwargs)
-
-        with self._save_model_dir.open('wb') as save_model_file:
-
+        with save_model_dir.open('wb') as save_model_file:
             joblib.dump(model_file, save_model_file)
