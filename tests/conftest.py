@@ -17,8 +17,6 @@ class Directories(Enum):
 
     MODELS_DIR = PARENT_DIR / FolderNames.MODELS.value
 
-    RF_MODEL_TRAIN_DIR = MODELS_DIR / 'random_forest_train.joblib'
-
     RF_MODEL_PREDICT_DIR = MODELS_DIR / 'random_forest_predict.joblib'
 
 
@@ -39,7 +37,7 @@ def random_forest_model():
 
 @pytest.fixture(scope='module')
 def training(clean_data: CleanData, random_forest_model):
-    return Training(clean_data, random_forest_model, Directories.RF_MODEL_TRAIN_DIR.value)
+    return Training(clean_data, random_forest_model)
 
 
 @pytest.fixture(scope='module')

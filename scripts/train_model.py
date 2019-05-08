@@ -19,11 +19,11 @@ if __name__ == '__main__':
 
     parsed_args = parser.parse_args()
 
+    # TODO: separate CleanData from Training. CleanData should have its own script
     ingest_data = IngestData(parsed_args.raw_data_dir)
-
     clean_data = CleanData(ingest_data, parsed_args.test_size, parsed_args.test_train_random_state)
 
     model = Models[parsed_args.model].value
 
-    train_model = Training(clean_data, model, parsed_args.model_save_dir)
-    train_model.save_model()
+    train_model = Training(clean_data, model)
+    train_model.save_model(parsed_args.model_save_dir)
