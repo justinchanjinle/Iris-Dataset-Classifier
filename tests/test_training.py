@@ -17,7 +17,7 @@ def test_save_model(training: Training):
         if save_model_dir.exists():
             save_model_dir.unlink()
 
-        subprocess.run(['python3.6', '-m', 'scripts.train_model',
+        subprocess.run(['python3', '-m', 'scripts.train_model',
                         '--raw_data_dir', Directory.IRIS_DATA_DIR.value,
                         '--model', Models.random_forest_default.name,
                         '--model_save_dir', save_model_dir], cwd=Directory.PARENT_DIR.value)

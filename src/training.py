@@ -40,7 +40,5 @@ class Training(object):
     def save_model(self, **train_kwargs):
 
         model_file = self._train_model(**train_kwargs)
-
         with self._save_model_dir.open('wb') as save_model_file:
-
             joblib.dump(model_file, save_model_file)
