@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 @app.route('/predict', methods=['POST'])
 def predict() -> Response:
-    """Predicts a given set of features"""
+    """Set up a rest API to predicts a given set of features"""
 
     try:
         random_forest = Predict(Directory.RANDOM_FOREST_DEFAULT_DIR.value)
