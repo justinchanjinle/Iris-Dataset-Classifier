@@ -1,3 +1,4 @@
+[![CircleCI](https://circleci.com/gh/justinchanjinle/Iris-Dataset-Classifier.svg?style=svg)](https://circleci.com/gh/justinchanjinle/Iris-Dataset-Classifier)
 
 Iris Dataset Classifier
 ^^^^^^^^^^^^^^^^^^^^^^^
