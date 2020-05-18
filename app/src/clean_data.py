@@ -1,7 +1,7 @@
 from sklearn.model_selection import train_test_split
 
-from src.ingest_data import IngestData
-from utils.enumerations import LabelColumnNames
+from app.src.ingest_data import IngestData
+from app.utils.enumerations import LabelColumnNames
 
 
 class CleanData(object):

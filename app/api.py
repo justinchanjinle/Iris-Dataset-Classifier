@@ -1,8 +1,8 @@
 from flask import Flask, jsonify, make_response, request, Response
 from pandas import DataFrame
 
-from src.predict import Predict
-from utils.enumerations import Directory
+from app.src.predict import Predict
+from app.utils.enumerations import Directory
 
 app = Flask(__name__)
 

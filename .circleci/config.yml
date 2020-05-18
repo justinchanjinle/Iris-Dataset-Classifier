@@ -1,26 +1,24 @@
 # Sets up the deployment on CircleCI
 
-version: 2
+version: 2.1
+
+executors:
+  ubuntu_bionic:
+    docker:
+      - image: circleci/buildpack-deps:bionic
+
 
 workflows:
   version: 2
   iris-dataset-classifier:
     jobs:
-      - build
-
+      - run_checks_and_test
 
 jobs:
-  build:
-    working_directory: ~/circleci-iris-dataset-classifier
-
-    docker:
-      - image: circleci/buildpack-deps:bionic
-
+  run_checks_and_test:
+    executor: ubuntu_bionic
     steps:
       - checkout
-
-      - setup_remote_docker
-
       - run:
           name: Install python3 and pip3
           command:
@@ -30,15 +28,19 @@ jobs:
           name: Install requirements
           command:
             sudo python3 -m pip install -r requirements.txt
+          when: always
 
       - run:
           name: Run pip3 freeze
           command: python3 -m pip freeze
+          when: always
 
       - run:
           name: Run flake8
           command: python3 -m flake8
+          when: always
 
       - run:
           name: Run the test suite
           command: python3 -m pytest
+          when: always

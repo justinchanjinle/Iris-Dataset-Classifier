@@ -2,7 +2,7 @@ from pathlib import Path
 
 import pandas as pd
 
-from utils.enumerations import FeatureColumnNames, LabelColumnNames
+from app.utils.enumerations import FeatureColumnNames, LabelColumnNames
 
 
 class IngestData(object):

@@ -1,6 +1,6 @@
 import pytest
 
-from utils.enumerations import FEATURE_COLUMN_NAMES_LIST, LabelColumnNames
+from app.utils.enumerations import FEATURE_COLUMN_NAMES_LIST, LabelColumnNames
 
 
 def test_clean_data(clean_data):

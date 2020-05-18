@@ -1,7 +1,7 @@
 flake8
-Flask>=1.0.2
-joblib>=0.13.2
-matplotlib>=3.0.3
-pandas>=0.24.2
-pytest>=4.3.1
+Flask
+joblib
+matplotlib
+pandas
+pytest
 sklearn
