@@ -23,4 +23,3 @@ def test_save_model(training: Training, tmp_path: Path):
 
     except subprocess.CalledProcessError as e:
         pytest.fail(f"Random forest model training failed: \n {e.stderr.decode('utf-8')}")
-
