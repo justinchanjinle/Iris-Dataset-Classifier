@@ -14,9 +14,6 @@ def test_save_model(training: Training, tmp_path: Path):
 
         save_model_dir = tmp_path / 'random_forest_train.joblib'
 
-        if save_model_dir.exists():
-            save_model_dir.unlink()
-
         subprocess.run(['python3', '-m', 'scripts.train_model',
                         '--raw_data_dir', Directory.IRIS_DATA_DIR.value,
                         '--model', MachineLearningModels.random_forest_default.name,
