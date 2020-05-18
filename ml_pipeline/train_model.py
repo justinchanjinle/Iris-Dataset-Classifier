@@ -1,10 +1,10 @@
 import argparse
 from pathlib import Path
 
-from app.src.clean_data import CleanData
-from app.src.ingest_data import IngestData
-from app.src.training import Training
-from app.utils.enumerations import MODELS_NAME_LIST, MachineLearningModels
+from ml_pipeline.src.clean_data import CleanData
+from ml_pipeline.src.ingest_data import IngestData
+from ml_pipeline.src.training import Training
+from ml_pipeline.utils.enumerations import MODELS_NAME_LIST, MachineLearningModels
 
 if __name__ == '__main__':
 

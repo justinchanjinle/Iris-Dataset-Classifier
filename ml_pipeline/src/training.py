@@ -5,7 +5,7 @@ from typing import TypeVar
 
 from sklearn.base import ClassifierMixin
 
-from app.src.clean_data import CleanData
+from ml_pipeline.src.clean_data import CleanData
 
 TClassifier = TypeVar('TClassifier', bound=ClassifierMixin)
 

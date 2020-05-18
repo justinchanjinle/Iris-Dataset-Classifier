@@ -4,11 +4,11 @@ from pathlib import Path
 import pytest
 from sklearn.ensemble import RandomForestClassifier
 
-from app.src.clean_data import CleanData
-from app.src.ingest_data import IngestData
+from ml_pipeline.src.clean_data import CleanData
+from ml_pipeline.src.ingest_data import IngestData
 from app.src.predict import Predict
-from app.src.training import Training
-from app.utils.enumerations import Directory, FolderNames
+from ml_pipeline.src.training import Training
+from ml_pipeline.utils.enumerations import Directory, FolderNames
 
 
 class Directories(Enum):

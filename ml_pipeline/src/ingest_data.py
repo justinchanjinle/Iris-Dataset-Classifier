@@ -2,7 +2,7 @@ from pathlib import Path
 
 import pandas as pd
 
-from app.utils.enumerations import FeatureColumnNames, LabelColumnNames
+from ml_pipeline.utils.enumerations import FeatureColumnNames, LabelColumnNames
 
 
 class IngestData(object):
