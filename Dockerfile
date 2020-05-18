@@ -9,4 +9,4 @@ COPY app/ /app
 WORKDIR /app
 
 EXPOSE 5000
-CMD ["python3", "-m", "app.api"]
+CMD ["python3", "-m", "api"]
