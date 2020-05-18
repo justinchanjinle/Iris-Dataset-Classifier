@@ -1,7 +1,7 @@
 import pandas as pd
 import pytest
 
-from src.predict import Predict
+from app.src.predict import Predict
 
 
 def test_predict(predict: Predict, x_test: pd.DataFrame):

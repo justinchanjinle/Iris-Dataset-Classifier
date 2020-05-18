@@ -45,9 +45,9 @@ class FeatureColumnNames(DataColumnNames):
 FEATURE_COLUMN_NAMES_LIST = [column_name.value for column_name in list(FeatureColumnNames)]
 
 
-class Models(Enum):
+class MachineLearningModels(Enum):
 
     random_forest_default = RandomForestClassifier(max_depth=20, random_state=0, n_estimators=200, n_jobs=6)
 
 
-MODELS_NAME_LIST = [model.name for model in Models]
+MODELS_NAME_LIST = [model.name for model in MachineLearningModels]

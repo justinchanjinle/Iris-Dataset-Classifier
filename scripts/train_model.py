@@ -1,10 +1,10 @@
 import argparse
 from pathlib import Path
 
-from src.clean_data import CleanData
-from src.ingest_data import IngestData
-from src.training import Training
-from utils.enumerations import MODELS_NAME_LIST, Models
+from app.src.clean_data import CleanData
+from app.src.ingest_data import IngestData
+from app.src.training import Training
+from app.utils.enumerations import MODELS_NAME_LIST, MachineLearningModels
 
 if __name__ == '__main__':
 
@@ -23,7 +23,7 @@ if __name__ == '__main__':
     ingest_data = IngestData(parsed_args.raw_data_dir)
     clean_data = CleanData(ingest_data, parsed_args.test_size, parsed_args.test_train_random_state)
 
-    model = Models[parsed_args.model].value
+    model = MachineLearningModels[parsed_args.model].value
 
     train_model = Training(clean_data, model)
     train_model.save_model(parsed_args.model_save_dir)
