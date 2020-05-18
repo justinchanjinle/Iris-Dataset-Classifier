@@ -27,7 +27,7 @@ jobs:
 
       - run:
           name: Build Dockerfile
-          command: docker build -t justinchanjinle/iris-dataset-classifier:$CIRCLE_BRANCH .
+          command: docker build -t justinchanjinle/iris-dataset-classifier:$CIRCLE_BRANCH --rm .
 
       - run:
           name: Push Dockerfile
