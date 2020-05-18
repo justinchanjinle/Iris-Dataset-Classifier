@@ -8,11 +8,11 @@ import pytest
 from app.utils.enumerations import Directory, MachineLearningModels
 
 
-def test_save_model(training: Training, tmpdir: Path):
+def test_save_model(training: Training, tmp_path: Path):
 
     try:
 
-        save_model_dir = tmpdir / 'random_forest_train.joblib'
+        save_model_dir = tmp_path / 'random_forest_train.joblib'
 
         if save_model_dir.exists():
             save_model_dir.unlink()
