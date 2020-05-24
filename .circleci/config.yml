@@ -13,8 +13,26 @@ workflows:
   iris-dataset-classifier:
     jobs:
       - run_checks_and_test
+      - build_and_push_docker
 
 jobs:
+  build_and_push_docker:
+    executor: ubuntu_bionic
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          name: Log in to DockerHub
+          command: echo "$DOCKER_PASS" | docker login --username $DOCKER_USER --password-stdin
+
+      - run:
+          name: Build Dockerfile
+          command: docker build -t justinchanjinle/iris-dataset-classifier:$CIRCLE_BRANCH --rm .
+
+      - run:
+          name: Push Dockerfile
+          command: docker push justinchanjinle/iris-dataset-classifier:$CIRCLE_BRANCH
+
   run_checks_and_test:
     executor: ubuntu_bionic
     steps:

@@ -1,5 +1,6 @@
 flake8
-Flask
+flask
+flask-restx
 joblib
 matplotlib
 pandas

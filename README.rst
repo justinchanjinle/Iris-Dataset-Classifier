@@ -36,6 +36,7 @@ Run this command as the first step to run the container immediately
 
     curl http://localhost:5000/predict --request POST --header "Content-Type: application/json" --data '{"sepal_length": [4.9], "sepal_width": [3.0], "petal_length": [1.4], "petal_width": [0.2]}'
 
+4. Use of Swagger UI is also available for execution at http://localhost:5000
 
 Dataset
 =======
