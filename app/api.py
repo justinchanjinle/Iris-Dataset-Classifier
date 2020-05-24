@@ -1,25 +1,31 @@
-from flask import Flask, jsonify, make_response, request, Response
+from flask import Flask, jsonify, make_response, request
+from flask_restx import Api, Resource
 from pandas import DataFrame
 
 from app.src.predict import Predict
 from app.utils.enumerations import Directory
 
 app = Flask(__name__)
+api = Api(app=app, version="1.0", title="Iris Classifier", description="Predict iris type based on data")
+
+name_space = api.namespace("main", description="Predict Iris type.")
 
 
-@app.route('/predict', methods=['POST'])
-def predict() -> Response:
-    """Set up a rest API to predicts a given set of features"""
+@name_space.route("/predict")
+class PredictIris(Resource):
 
-    try:
-        random_forest = Predict(Directory.RANDOM_FOREST_DEFAULT_DIR.value)
-        features = DataFrame(request.json)
-        prediction = random_forest.predict(features).tolist()
-        return make_response(jsonify({'prediction': prediction}))
+    def post(self):
+        """Set up a rest API to predicts a given set of features"""
 
-    except Exception as exception:
-        raise RuntimeError(f'Failed to predict iris classes: {exception}')
+        try:
+            random_forest = Predict(Directory.RANDOM_FOREST_DEFAULT_DIR.value)
+            features = DataFrame(request.json)
+            prediction = random_forest.predict(features).tolist()
+            return make_response(jsonify({"prediction": prediction}))
+
+        except Exception as exception:
+            raise RuntimeError(f"Failed to predict iris classes: {exception}")
 
 
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000)
