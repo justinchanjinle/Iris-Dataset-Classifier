@@ -8,13 +8,14 @@ from app.utils.enumerations import Directory
 app = Flask(__name__)
 api = Api(app=app, version="1.0", title="Iris Classifier", description="Predict iris type based on data")
 
-name_space = api.namespace("main", description="Predict Iris type.")
+name_space = api.namespace("predict", description="Predict Iris type.")
 
 
-@name_space.route("/predict")
+@name_space.route("/")
 class PredictIris(Resource):
 
-    def post(self):
+    @staticmethod
+    def post():
         """Set up a rest API to predicts a given set of features"""
 
         try:
