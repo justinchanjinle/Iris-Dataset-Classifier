@@ -4,6 +4,8 @@ from pathlib import Path
 import pytest
 from sklearn.ensemble import RandomForestClassifier
 
+from app.api import app
+
 from ml_pipeline.src.clean_data import CleanData
 from ml_pipeline.src.ingest_data import IngestData
 from app.src.predict import Predict
@@ -48,3 +50,10 @@ def x_test(training: Training):
 @pytest.fixture(scope='module')
 def predict():
     return Predict(Directories.RF_MODEL_PREDICT_DIR.value)
+
+
+@pytest.fixture
+def client():
+    with app.test_client() as client:
+        app.testing = True
+        yield client
