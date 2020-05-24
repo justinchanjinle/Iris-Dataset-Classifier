@@ -1,5 +1,5 @@
 from flask import Flask, jsonify, make_response, request
-from flask_restx import Api, Resource
+from flask_restx import Api, Resource, fields
 from pandas import DataFrame
 
 from app.src.predict import Predict
@@ -10,11 +10,25 @@ api = Api(app=app, version="1.0", title="Iris Classifier", description="Predict 
 
 name_space = api.namespace("predict", description="Predict Iris type.")
 
+model = api.model("Prediction params",
+                  {"sepal_length": fields.List(fields.Float, required=True,
+                                               description="Sepal Length"),
+                   "sepal_width": fields.List(fields.Float, required=True,
+                                              description="Sepal Width"),
+                   "petal_length": fields.List(fields.Float, required=True,
+                                               description="Petal Length"),
+                   "petal_width": fields.List(fields.Float, required=True,
+                                              description="Petal Width")})
+
 
 @name_space.route("/")
 class PredictIris(Resource):
 
     @staticmethod
+    @name_space.doc(responses={200: "Prediction successful",
+                               400: "Invalid prediction parameters",
+                               500: "Prediction failed"})
+    @name_space.expect(model)
     def post():
         """Set up a rest API to predicts a given set of features"""
 
